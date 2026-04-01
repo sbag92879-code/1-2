@@ -1,9 +1,9 @@
 const http = require('http');
 
 const server = http.createServer((req, res) => {
-    res.statuCode = 200;
-    res.setHaeder('Content-Type', 'text/plain');
-    res.end('Hello', 'world!\n');
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello world!\n');
     
 });
 
