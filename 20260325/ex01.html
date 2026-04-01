@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #score {
+            background-color: rgb(230, 230, 230);
+            border: none;
+            /*테두리선을 없애라*/
+            border-bottom: 1px dotted rgb(10, 10, 10);
+            /*밑에 선*/
+        }
+    </style>
+</head>
+
+<body>
+    <h1>성적확인</h1>
+    <!-- 90이상 100이하 A학점-->
+    <input type="text" name="" id="score" value="">
+    <button id="check">성적확인</button>
+    <div id="print">ㄹㅇ라일</div>
+</body>
+
+</html>
+<script>
+    // button 에는 onclick 속성 있음
+    // input 에는 value 속성있음
+    // div, h1~h5, span 에는 textContent 속성있음.
+    document.getElementById('check').onclick = function () {
+        const num = document.getElementById('score').value;
+        if (num >= 90 && num <= 100) {
+            document.getElementById('print').textContent = 'A학점'
+            console.log('A학점')
+        }
+        else if (num >= 80 && num <= 89) {
+            document.getElementById('print').textContent = 'B학점'
+            console.log('B학점')
+        }
+        else if (num >= 70 && num <= 79) {
+            document.getElementById('print').textContent = 'C학점'
+            console.log('C학점')
+        }
+        else if (num >= 60 && num <= 69) {
+            document.getElementById('print').textContent = 'D학점'
+            console.log('D학점')
+        }
+        else if (num < 60) {
+            document.getElementById('print').textContent = 'F학점'
+            console.log('F학점')
+        }
+        else{
+            document.getElementById('print').textContent = '?'
+        }
+
+    }
+
+
+
+</script>
