@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Move Example</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+
+        /* mdiv 스타일 */
+        #mdiv {
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+            transition: all 0.5s;
+        }
+
+        /* ndiv 스타일 */
+        #ndiv {
+            width: 100px;
+            height: 100px;
+            background-color: antiquewhite;
+            position: absolute; /* 중요 */
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="mdiv"></div>
+    <div id="ndiv"></div>
+
+    <script>
+        let x = 0;
+        let y = 0;
+
+        const mdiv = document.getElementById('mdiv');
+        const ndiv = document.getElementById('ndiv');
+
+        // 방향키로 ndiv 이동
+        window.addEventListener('keydown', function (e) {
+            if (e.key === 'ArrowUp') {
+                y -= 30;
+            } else if (e.key === 'ArrowDown') {
+                y += 30;
+            } else if (e.key === 'ArrowRight') {
+                x += 30;
+            } else if (e.key === 'ArrowLeft') {
+                x -= 30;
+            }
+
+            ndiv.style.top = y + 'px';
+            ndiv.style.left = x + 'px';
+        });
+
+        // 3초 후 mdiv 이동
+        function move() {
+            mdiv.style.width = '300px';
+            mdiv.style.marginLeft = '300px';
+        }
+
+        setTimeout(move, 3000);
+    </script>
+
+</body>
+</html>

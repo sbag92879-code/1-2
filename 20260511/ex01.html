@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간식 추천</title>
+    <style>
+        body {
+            background-color: rgb(245, 245, 245);
+            font-family: "Noto Sans KR", sans-serif
+        }
+
+        h1 {
+            color: rgb(50, 80, 160);
+        }
+
+        .wrap {
+            padding: 20px;
+            width: 600px;
+            margin: 30px auto;
+            background-color: rgb(255, 255, 255);
+            border-radius: 10px;
+
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .menu_box {
+            padding: 15px;
+            margin-top: 20px;
+            background-color: rgb(235, 242, 255);
+            border-radius: 10px;
+        }
+        .menu_event{
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgb(255, 241, 210);
+            border-radius: 10px;
+        }
+
+        .menu_box li {
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: 400px;
+            height: 34px;
+        }
+
+        button {
+            height: 38px;
+            background-color: rgb(50, 80, 160);
+            /*배경색 지정*/
+            color: white;
+            /* 글자색 흰색*/
+            border: none;
+            /*테두리 없음*/
+            border-radius: 6px;
+            cursor: pointer;
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="wrap">
+        <h1>우리반 간식 소개 & 추천</h1>
+        <p>친구들과 먹고 싶은 간식을 소개하고 추첨하는 웹 페이지입니다.</p>
+        <img src="./snackbar-hero.png" alt="간식 사진" />
+        <div class="menu_box">
+            <h2>인기간식</h2>
+            <ul id="menu_list"></ul>
+            <!-- <li></li> -->
+        </div>
+        <div class="menu_box">
+            <h2>간식 추가하기</h2>
+            <input type="text" id="input_snack">
+            <button id="btn_add">추가</button>
+        </div>
+        <div class="menu_event">
+            <h2>오늘의 간식 추천</h2>
+            <p id="print">버튼을 누르면 간식이 추천 됩니다.</p>
+            <button id="btn_random">간식 추첨</button>
+        </div>
+    </div>
+    <script>
+        const snacks = ["치즈 토스트", "딸기 에이드", "초코 쿠키"];
+        function renderSnack(snack) {
+            console.log('renderSnack' + snack);
+            // li 태그 생성
+            const li1 = document.createElement('li')
+            //li 태그 안에 글자 내용을 치즈토스트로 설정
+            li1.textContent = snack;
+            // ul 태그 menu_list 에 li 자식 추가
+            document.getElementById('menu_list').appendChild(li1);
+        }
+
+        for (let i = 0; i < snacks.length; i++) {
+            renderSnack(snacks[i]);
+            
+        }
+
+    
+        document.getElementById('btn_add').onclick = function(){
+            const snack = document.getElementById('input_snack').value;
+            if(!snack){
+                alert('간식이름을 입력하세요');
+
+            }else{
+                snacks.push(snack);
+                console.log(snack);
+                renderSnack(snack);
+            }
+        }
+
+        document.getElementById('btn_random').onclick = function(){
+            // 0 < x < 1
+            // 0.000000001 ~ 0.999999999
+            // * 10
+        // 0.000000001  9.999999999
+            const randomNumber = Math.floor(Math.random() * snacks.length);
+            console.log(randomNumber);
+            document.getElementById('print').textContent = `오늘의 추천 간식은 ${snacks[randomNumber]}입니다.`;
+        }
+
+    </script>
+</body>
+
+</html>

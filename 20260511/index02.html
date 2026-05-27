@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(232, 248, 238);
+            font-family: "Noto Sans KR", sans-serif;
+        }
+
+        h1 {
+            color: rgb(22, 120, 86);
+        }
+
+        .treat_wrap {
+            width: 660px;
+            margin: 46px auto;
+            padding: 30px;
+            background-color: white;
+            border-radius: 18px;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 18px;
+        }
+
+        .treat_panel {
+            margin-top: 28px;
+            padding: 22px;
+            background-color: rgb(204, 238, 219);
+            border-radius: 18px;
+        }
+
+        .treat_panel li {
+            margin-bottom: 10px;
+        }
+
+        .draw_panel {
+            margin-top: 28px;
+            padding: 22px;
+            background-color: rgb(255, 246, 198);
+            border-radius: 18px;
+        }
+
+        input {
+            width: 460px;
+            height: 40px;
+        }
+
+        button {
+            height: 44px;
+            color: white;
+            background-color: rgb(22, 120, 86);
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: rgb(244, 142, 76);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="treat_wrap">
+        <h1>2반 간식 보드와 추첨</h1>
+        <p>먹고 싶은 간식을 등록하고 오늘의 메뉴를 뽑는 웹 페이지입니다.</p>
+        <img src="snackbar-hero_c2.png" alt="간식 이미지">
+
+        <div class="treat_panel">
+            <h2>추천 간식 목록</h2>
+            <ul id="treat_list"></ul>
+        </div>
+
+        <div class="treat_panel">
+            <h2>간식 등록하기</h2>
+            <input id="treat_input" placeholder="새 간식 이름 입력" type="text">
+            <button id="add_treat_btn">등록</button>
+        </div>
+        
+        <div class="draw_panel">
+            <h2>오늘 뽑힌 간식</h2>
+            <p id="draw_result">아직 간식이 선택되지 않았습니다.</p>
+            <button id="draw_treat_btn">간식 뽑기</button>
+        </div>
+    </div>
+
+
+</body>
+<script>
+    const snacks = ["불고기 샌드위치", "망고 스무디", "오레오 쿠키"];
+    const getRandomNumber = function (n) {
+
+        return Math.floor(Math.random() * n);
+    };
+
+    document.getElementById("draw_treat_btn").onclick = function () {
+        const num = getRandomNumber(snacks.length);
+        document.getElementById("draw_result").textContent =
+            `오늘 뽑힌 간식은 ${snacks[num]}입니다!`;
+    };
+
+    const renderSnack = function (snack) {
+
+        const li = document.createElement("li");
+        li.textContent = snack;
+        document.getElementById("treat_list").appendChild(li);
+        
+    };
+
+    const addSnack = function (snack) {
+
+        if (snack) {
+            snacks.push(snack);
+            return true;
+        }
+        return false;
+    };
+
+    for (let i = 0; i < snacks.length; i++) {
+        renderSnack(snacks[i]);
+    }
+
+    document.getElementById("add_treat_btn").onclick = function () {
+
+        const snack = document.getElementById("treat_input").value;
+        if (addSnack(snack)) {
+            renderSnack(snack);
+        } else {
+            alert("간식 이름을 입력해주세요.");
+        }
+    };
+
+
+</script>
+
+</html>

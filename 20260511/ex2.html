@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>간식 추천</title>
+</head>
+<body>
+    <div class="wrap">
+        <h1>우리 반 간식 소개 & 추첨</h1>
+        <p>친구들과 먹고 싶은 간식을 소개하고 추첨하는 웹 페이지입니다. </p>
+        <img src="snackbar-hero.png"></a>
+
+        <div class="menu_box">
+            <h2>인기 간식</h2>
+            <ul id="menu_list"></ul>
+            <li></li>
+        </div>
+        <div class="menu_box">
+            <h2>간식 추가하기</h2>
+            <input placeholder="추가할 간식 이름" id="input_snack"type="text">
+            <button id="btn_add">추가</button>
+
+        </div>
+        <div class="menu_event">
+            <h2>오늘의 간식 추천</h2>
+            <p id="print">
+            버튼을 누르면 간식이 추천 됩니다.
+            </p>
+            <button id="btn_random"> 간식 추첨</button>
+        </div>
+    </div>
+
+<script>
+        const snacks = ["치즈 토스트", "딸기 에이스", "초코 쿠키"]
+        function renderSnack(snack) {
+            console.log('renderSnack' + snack);
+            const li = document.createElement('li')
+            li1.textContent = snack;
+            document.getElementById('menu_list').appendChild(li1);
+
+        }
+
+        for (let i = 0; i < snack.length; i++){
+            renderSnack(snacks[i]);
+        }
+
+        document.getElementById('btn_add')
+    </script>
+</body>
+</html>

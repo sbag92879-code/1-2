@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!--
+    e.preventDefault() 기본 기능 막기
+    e.stopPropagation() 이벤트 여러개 호출되는 거 막기
+    -->
+    <div id="mdiv" style="padding: 10px; background-color: aqua;">
+        <div id="subdiv" style="padding: 10px; background-color: bisque">
+            <h1>sub</h1>
+            <p>stoppropagation 은 이벤트 여러개 호출 막음</p>
+            <!-- submit 버튼을 누르게 되면 ex02.html 이동됩니다.-->
+            <form action="ex02.html" id="myform">
+                <input type="text" name="" id="id">
+                <input type="submit" value="페이지호출">
+            </form>
+            <script>
+                myform.addEventListener('submit', function (e) {
+                    // e.stopPropagation(); // 다른 이벤트 실행 되는거 막아달라
+                    e.preventDefault();
+                    console.log('submit 막음');
+                    console.log(id.value);
+                    // id값을 넣었으면 ex02.html 이동
+                    if(id.value.length>0){
+                        myform.submit();
+                    }else{
+                        alert('아이디를 입력하세요.')
+                    }
+                    // id값을 넣지 않으면 id 입력하세요.
+                });
+            </script>
+
+        </div>
+    </div>
+    <script>
+        mdiv.addEventListener('click', function () {
+            console.log('mdiv click');
+        });
+        subdiv.addEventListener('click', function (e) {
+            e.stopPropagation();
+            console.log('subdiv click');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+   
+    <h1 id="h1">마우스 이벤트</h1>
+
+    <script>
+        const h1 = document.getElementById('h1');
+
+        h1.addEventListener('click', function (event) {
+            alert('클릭');
+            console.log(event.type);
+            console.log(event.currentTarget);
+            console.log(event.clientX);
+            console.log(event.clientY);
+            console.log(this);
+        });
+    </script>
+
+
+    <input type="button" id="btnclick" value="버튼" />
+
+    <script>
+        const btnclick = document.getElementById('btnclick');
+
+        function one() {
+            console.log(this);
+            console.log(this.value);
+            console.log('click');
+        }
+
+        function two() {
+            console.log('two click');
+            btnclick.removeEventListener('click', two);
+        }
+
+        btnclick.addEventListener('click', one);
+        btnclick.addEventListener('click', two);
+    </script>
+
+
+    <p id="pp">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+    </p>
+
+    <script>
+        const pp = document.getElementById('pp');
+
+        const mouseOverFn = function () {
+            console.log('마우스 들어왔어');
+        };
+
+        const mouseOutFn = function () {
+            console.log('마우스 나갔어');
+        };
+
+        pp.onmouseover = mouseOverFn;
+        pp.onmouseout = mouseOutFn;
+    </script>
+
+</body>
+
+</html>

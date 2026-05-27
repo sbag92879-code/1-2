@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            font-family: "Nanum Pen Script", "Noto Sans KR", sans-serif;
+            ;
+            box-sizing: border-box;
+        }
+
+        .main {
+
+            margin: 0 auto;
+            width: 500px;
+            height: 300px;
+            padding: 20px;
+            background-color: rgb(230, 230, 230);
+        }
+
+        #price {
+            width: 100%;
+            border: 1px solid rgb(100, 150, 220);
+            border-radius: 5px;
+            outline: none;
+            padding: 5px 10px;
+            margin-bottom: 1rem;
+        }
+
+        #calcu {
+            background-color: rgb(100, 150, 255);
+            color: rgb(230, 230, 230);
+            border: none;
+            cursor: pointer;
+            padding: 12px 20px;
+        }
+
+        #calcu:hover {
+            background-color: rgb(130, 180, 255);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h1>
+            아메리카노
+        </h1>
+        <input type="text" id="price" value="5500">
+        <div style="float: right;"><button id="calcu">계산</button></div>
+
+        <div id="print">
+            아메리카노 2개 살수 있고 거스름돈은 얼마입니다.
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+    const myfn = function () {
+        // money = Number(money);
+        document.getElementById('price').value;
+        let count = 0;
+        while (true) {
+            Number(money) - 5500 * count
+        }
+
+        document.getElementById('print').textContent =
+            `아메리카노 ${count} 살 수 있다.. 거스름돈은 얼마다`;
+
+    }
+    document.getElementById('calcu').onclick = myfn;
+</script>
